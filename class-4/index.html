@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+    <style>
+        .container{
+            background-color: bisque;
+            color: black;
+            font-size: 20px;
+            margin: 20px;
+            padding:100px;
+
+        }
+    </style>
+    <script>
+        function populateDiv(){
+            // alert("Hi there");
+            let a = document.getElementById("first-number").value;
+            let b = document.getElementById("second-number").value;
+            let c = parseInt(a) + parseInt(b);
+            document.getElementById("finalSum").innerHTML = c;
+
+        }
+        let timer
+        function debouncedPopulateDiv(){
+           clearTimeout(timer)
+            timer = setTimeout(()=>{
+                populateDiv()
+            },1000);
+        }
+    </script>
+<body>
+    <input oninput="debouncedPopulateDiv()"  id="first-number" type="number" placeholder="first-number"><br>
+    <input oninput="debouncedPopulateDiv()" id="second-number" type="number" placeholder="second-number"><br>
+    <!-- <button onClick="debouncedPopulateDiv()">Calculate Sum</button> -->
+    <div id="finalSum"></div>
+
+    
+</body>
+</html>
